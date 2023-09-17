@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header h2 {
+  font-family: "Lemonada", cursive;
+}
+
+header {
+  background-color: #03045e;
+  color: #ffffff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#usuario {
+  font-family: "Roboto", sans-serif;
+  font-size: small;
+}
+
+#usuario:hover {
+  cursor: pointer;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.tarefas {
+  width: 27.5%;
+}
+
+h5 {
+  font-family: "Lemonada", cursive;
+  text-align: center;
+}
+
+#pendentes,
+#iniciadas,
+#concluidas {
+  font-weight: lighter;
+}
+
+#concluidas .card-body{
+  text-decoration: line-through;
+}
+
+#pendentes .tarefa:hover {
+  background-color: #dc3545;
+  border-color: white;
+  color: white;
+}
+
+#pendentes .fa-rotate-right, #iniciadas .fa-rotate-right {
+  display: none;
+}
+
+#iniciadas .tarefa:hover {
+  background-color: #ffc107;
+}
+
+#iniciadas .tarefa:hover .fa-solid {
+  color: black;
+}
+
+#concluidas .card-body:hover {
+  background-color: #198754;
+  text-decoration: none;
+  border-color: white;
+  color: white;
+}
+
+#concluidas .fa-check {
+  display: none;
+}
+
+.adicionar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.botaoTarefa {
+  width: 50%;
+  margin-right: 2px;
+}
+
+.tarefa {
+  text-align: justify;
+  margin: 5px;
+}
+
+.tarefa .card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.acoes-tarefa {
+  color: black;
+  display: none;
+}
+
+.tarefa:hover .acoes-tarefa {
+  width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fa-check, .fa-pencil, .fa-paperclip, .fa-trash, .fa-rotate-right{
+  color: white;
+  margin: 3px;
+  cursor: pointer;
+}
+
+footer {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #03045e;
+  color: #ffffff;
+  font-size: small;
+}

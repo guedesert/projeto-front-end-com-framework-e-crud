@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400&family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>To-do List</title>
+  </head>
+  <body>
+    <header>
+      <h2>
+        <img src="assets/logo.svg" alt="Logo" width="36px" />
+        &nbsp; To-do List
+      </h2>
+      <div id="usuario" onclick="defineusuario()"></div>
+    </header>
+    <main class="d-flex justify-content-around">
+      <div class="card tarefas">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="fa-solid fa-note-sticky"></i>&nbsp; Pendentes
+          </h5>
+          <hr />
+          <div id="pendentes"></div>
+          <div
+            id="botaoPendente"
+            class="adicionar btn btn-primary"
+            onclick="escondeBotao(1)"
+          >
+            <i class="fa-solid fa-plus"></i>
+            &nbsp; Adicione uma tarefa
+          </div>
+          <div id="adicionaPendente">
+            <input
+              type="text"
+              id="inputPendente"
+              class="form-control"
+              placeholder="Digite sua tarefa"
+            />
+            <div class="botoes">
+              <div
+                class="btn btn-success form-control botaoTarefa"
+                onclick="adicionarTarefa(1)"
+              >
+                Adicionar
+              </div>
+              <div
+                class="btn btn-danger form-control"
+                onclick="cancelarTarefa(1)"
+              >
+                Cancelar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card tarefas">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="fa-solid fa-note-sticky"></i>&nbsp; Iniciadas
+          </h5>
+          <hr />
+          <div id="iniciadas"></div>
+          <div
+            id="botaoIniciada"
+            class="adicionar btn btn-primary"
+            onclick="escondeBotao(2)"
+          >
+            <i class="fa-solid fa-plus"></i>
+            &nbsp; Adicione uma tarefa
+          </div>
+          <div id="adicionaIniciada">
+            <input
+              type="text"
+              id="inputIniciada"
+              class="form-control"
+              placeholder="Digite sua tarefa"
+            />
+            <div class="botoes">
+              <div
+                class="btn btn-success form-control botaoTarefa"
+                onclick="adicionarTarefa(2)"
+              >
+                Adicionar
+              </div>
+              <div
+                class="btn btn-danger form-control"
+                onclick="cancelarTarefa(2)"
+              >
+                Cancelar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card tarefas">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="fa-solid fa-note-sticky"></i>&nbsp; Concluídas
+          </h5>
+          <hr />
+          <div id="concluidas"></div>
+          <div
+            id="botaoConcluida"
+            class="adicionar btn btn-primary"
+            onclick="escondeBotao(3)"
+          >
+            <i class="fa-solid fa-plus"></i>
+            &nbsp; Adicione uma tarefa
+          </div>
+          <div id="adicionaConcluida">
+            <input
+              type="text"
+              id="inputConcluida"
+              class="form-control"
+              placeholder="Digite sua tarefa"
+            />
+            <div class="botoes">
+              <div
+                class="btn btn-success form-control botaoTarefa"
+                onclick="adicionarTarefa(3)"
+              >
+                Adicionar
+              </div>
+              <div
+                class="btn btn-danger form-control"
+                onclick="cancelarTarefa(3)"
+              >
+                Cancelar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>&copy; 2023. Desenvolvido por Emanuel Guedes.</footer>
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/fbb33ee0e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
