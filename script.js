@@ -72,9 +72,6 @@ function criarTarefaPadrao() {
   const editarIcon = document.createElement("i")
   editarIcon.className = "fa-solid fa-pencil"
   editarIcon.onclick = editarTarefa
-  const anexarIcon = document.createElement("i")
-  anexarIcon.className = "fa-solid fa-paperclip"
-  anexarIcon.onclick = anexarArquivo
   const excluirIcon = document.createElement("i")
   excluirIcon.className = "fa-solid fa-trash"
   excluirIcon.onclick = excluirTarefa
@@ -83,7 +80,6 @@ function criarTarefaPadrao() {
   reabrirIcon.onclick = reabrirTarefa
   acoesTarefa.appendChild(concluirIcon)
   acoesTarefa.appendChild(editarIcon)
-  acoesTarefa.appendChild(anexarIcon)
   acoesTarefa.appendChild(excluirIcon)
   acoesTarefa.appendChild(reabrirIcon)
   const cardBody = document.createElement("div")
@@ -93,8 +89,6 @@ function criarTarefaPadrao() {
   cardTarefa.appendChild(cardBody)
   return cardTarefa
 }
-
-verificarListasVazias()
 
 tarefasPendentes.forEach((textoTarefa) => {
   const novaTarefa = criarCardTarefa(textoTarefa)
@@ -149,8 +143,6 @@ function escondeBotao(lista) {
   }
 }
 
-escondeBotao(0)
-
 function adicionarTarefa(lista) {
   let inputTarefa, listaTarefas
   if (lista === 1) {
@@ -172,7 +164,7 @@ function adicionarTarefa(lista) {
   }
 }
 
-function criarCardTarefa(texto, anexo = null) {
+function criarCardTarefa(texto) {
   const cardTarefa = document.createElement("div")
   cardTarefa.className = "card tarefa"
   cardTarefa.draggable = true
@@ -187,9 +179,6 @@ function criarCardTarefa(texto, anexo = null) {
   const editarIcon = document.createElement("i")
   editarIcon.className = "fa-solid fa-pencil"
   editarIcon.onclick = editarTarefa
-  const anexarIcon = document.createElement("i")
-  anexarIcon.className = "fa-solid fa-paperclip"
-  anexarIcon.onclick = anexarArquivo
   const excluirIcon = document.createElement("i")
   excluirIcon.className = "fa-solid fa-trash"
   excluirIcon.onclick = excluirTarefa
@@ -198,26 +187,15 @@ function criarCardTarefa(texto, anexo = null) {
   reabrirIcon.onclick = reabrirTarefa
   acoesTarefa.appendChild(concluirIcon)
   acoesTarefa.appendChild(editarIcon)
-  acoesTarefa.appendChild(anexarIcon)
   acoesTarefa.appendChild(excluirIcon)
   acoesTarefa.appendChild(reabrirIcon)
   const cardBody = document.createElement("div")
   cardBody.className = "card-body"
   cardBody.textContent = texto
-  if (anexo) {
-    const linkAnexo = document.createElement("a")
-    linkAnexo.href = anexo
-    linkAnexo.textContent = "Anexo"
-    linkAnexo.target = "_blank"
-    linkAnexo.style.display = "block"
-    cardBody.appendChild(linkAnexo)
-  }
   cardBody.appendChild(acoesTarefa)
   cardTarefa.appendChild(cardBody)
   return cardTarefa
 }
-
-function anexarArquivo(event) {}
 
 function atualizarTarefas() {
   const tarefasListas = {
@@ -243,6 +221,8 @@ function atualizarTarefas() {
     "mcm2@concluidas",
     JSON.stringify(tarefasListas.concluidas)
   )
+  adicionaTitulo()
+  verificarListasVazias()
 }
 let draggingItem = null
 
@@ -272,17 +252,12 @@ function handleDrop(event) {
   }
 }
 
-
 function concluirTarefa(event) {
   const card = event.currentTarget.closest(".tarefa")
   const listaConcluidas = document.getElementById("concluidas")
   if (!listaConcluidas.contains(card)) {
     const listaAtual = card.parentElement
     listaAtual.removeChild(card)
-    if (listaAtual.length === 0 || listaAtual == "[]") {
-      const tarefaPadrao = criarTarefaPadrao()
-      listaAtual.appendChild(tarefaPadrao)
-    }
     listaConcluidas.appendChild(card)
     atualizarTarefas()
   }
@@ -306,9 +281,6 @@ function editarTarefa(event) {
     const editarIcon = document.createElement("i")
     editarIcon.className = "fa-solid fa-pencil"
     editarIcon.onclick = editarTarefa
-    const anexarIcon = document.createElement("i")
-    anexarIcon.className = "fa-solid fa-paperclip"
-    anexarIcon.onclick = anexarArquivo
     const excluirIcon = document.createElement("i")
     excluirIcon.className = "fa-solid fa-trash"
     excluirIcon.onclick = excluirTarefa
@@ -317,7 +289,6 @@ function editarTarefa(event) {
     reabrirIcon.onclick = reabrirTarefa
     novaAcoesTarefa.appendChild(concluirIcon)
     novaAcoesTarefa.appendChild(editarIcon)
-    novaAcoesTarefa.appendChild(anexarIcon)
     novaAcoesTarefa.appendChild(excluirIcon)
     novaAcoesTarefa.appendChild(reabrirIcon)
     card.appendChild(novaAcoesTarefa)
@@ -360,3 +331,26 @@ function cancelarTarefa(lista) {
     adicionaConcluida.style.display = "none"
   }
 }
+
+function adicionaTitulo() {
+  const concluir = document.querySelectorAll(".fa-check")
+  const editar = document.querySelectorAll(".fa-pencil")
+  const excluir = document.querySelectorAll(".fa-trash")
+  const reabrir = document.querySelectorAll(".fa-rotate-right")
+  concluir.forEach(function (elemento) {
+    elemento.title = "Concluir tarefa"
+  })
+  editar.forEach(function (elemento) {
+    elemento.title = "Editar tarefa"
+  })
+  excluir.forEach(function (elemento) {
+    elemento.title = "Excluir tarefa"
+  })
+  reabrir.forEach(function (elemento) {
+    elemento.title = "Reabrir tarefa"
+  })
+}
+
+verificarListasVazias()
+adicionaTitulo()
+escondeBotao(0)

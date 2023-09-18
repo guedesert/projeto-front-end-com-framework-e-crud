@@ -116,14 +116,15 @@ h5 {
 }
 
 .tarefa:hover .acoes-tarefa {
-  width: 50px;
+  width: 80px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .fa-check, .fa-pencil, .fa-paperclip, .fa-trash, .fa-rotate-right{
   color: white;
-  margin: 3px;
   cursor: pointer;
 }
 
